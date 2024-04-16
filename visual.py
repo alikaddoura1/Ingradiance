@@ -1,5 +1,5 @@
 import cv2
-import pytesseract
+#import pytesseract
 import PIL.Image
 
 """
@@ -28,7 +28,6 @@ OCR Enginer Mode
 3 Default, based on what is available
 """
 
-
 '''
 PLAN OF ACTION: 
 
@@ -36,7 +35,7 @@ PLAN OF ACTION:
 - FIX Image and make it look nicer with SRGAN
 - THEN process Image
 '''
-
+'''
 my_config = r"--psm 6 --oem 3"
 box_config =r"--psm 12 --oem 3"
 
@@ -47,4 +46,9 @@ cookiess_text = pytesseract.image_to_string(PIL.Image.open("cookiess.png"), conf
 
 
 print(box_text)
+'''
+
+halal_ingredients = []
+
+haram_ingredients = []
 
