@@ -46,26 +46,33 @@ box_config =r"--psm 12 --oem 3"
 
 
 box_text = pytesseract.image_to_string(PIL.Image.open("test.png"), config =box_config)
-cookiess_text = pytesseract.image_to_string(PIL.Image.open("cookiess.png"), config = box_config)
+cookiess_text = pytesseract.image_to_string(PIL.Image.open("cookiess.png"), config = my_config)
 
-ingredients_list_pre = cookiess_text.split(" ")
+ingredients_pre = cookiess_text.split(" ")
 
-ingredients_list_after = list()
+ingredients_after = list()
 
-remove = [ "%", "!", "@", "#",  "&", "(", ")", "_", "+", "-", "=", "0", "\n"]
+remove = [ "%", "!", "@", "#",  "&", "(", ")", "_", "+", "-", "=", "0", "7", "D", "\n"]
 
-for i in range(len(ingredients_list_pre) - 1):
-    if ingredients_list_pre[i] not in remove:
-        ingredients_list_after.append(ingredients_list_pre[i])
-    if len(ingredients_list_pre[i]) > 3:
-        ingredients_list_after.append(ingredients_list_pre[i])
+for i in range(len(ingredients_pre) - 1):
+
+    if len(ingredients_pre[i]) > 3:
+        if ingredients_pre[i] not in ingredients_after:
+            ingredients_after.append(ingredients_pre[i])
+
+ingredients = list()
+for i in range(len(ingredients_after) -1):
+    ingredient = ""
+    for j in range(len(ingredients_after[i]) - 1):
+        if ingredients_after[i][j] not in remove:
+            ingredient +=ingredients_after[i][j]
+    ingredients.append(ingredient)
+
+print(ingredients)
 
 
 
 
-print(ingredients_list_after)
-
-print(box_text)
 
 
 
