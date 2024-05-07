@@ -1,5 +1,5 @@
 import cv2
-#import pytesseract
+import pytesseract
 import PIL.Image
 
 """
@@ -37,14 +37,12 @@ PLAN OF ACTION:
 - give all the ingredients
 
 '''
-<<<<<<< HEAD
 
-box_config =r"--psm 6 --oem 3"
-=======
-'''
+
+
+
 my_config = r"--psm 6 --oem 3"
 box_config =r"--psm 12 --oem 3"
->>>>>>> a3e2e0a32b86bbc7b9fc40e3dfe23c7e2b5dc2d4
 
 
 box_text = pytesseract.image_to_string(PIL.Image.open("test.png"), config =box_config)
@@ -63,15 +61,12 @@ for i in range(len(ingredients_list_pre) - 1):
         ingredients_list_after.append(ingredients_list_pre[i])
 
 
-<<<<<<< HEAD
+
 
 print(ingredients_list_after)
-=======
+
 print(box_text)
-'''
 
-halal_ingredients = []
 
-haram_ingredients = []
->>>>>>> a3e2e0a32b86bbc7b9fc40e3dfe23c7e2b5dc2d4
+
 
