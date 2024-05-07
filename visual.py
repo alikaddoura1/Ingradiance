@@ -33,18 +33,31 @@ OCR Enginer Mode
 PLAN OF ACTION: 
 
 - OPEN IMAGE
-- FIX Image and make it look nicer with SRGAN
+- adjust area where to process
 - THEN process Image
+- give all the ingredients
+
 '''
 
-my_config = r"--psm 6 --oem 3"
-box_config =r"--psm 12 --oem 3"
+box_config =r"--psm 6 --oem 3"
 
 
-box_text = pytesseract.image_to_string(PIL.Image.open("box.png"), config =box_config)
+box_text = pytesseract.image_to_string(PIL.Image.open("test.png"), config =box_config)
 cookiess_text = pytesseract.image_to_string(PIL.Image.open("cookiess.png"), config = box_config)
 
+ingredients_list_pre = cookiess_text.split(" ")
+
+ingredients_list_after = list()
+
+remove = [ "%", "!", "@", "#",  "&", "(", ")", "_", "+", "-", "=", "0", "\n"]
+
+for i in range(len(ingredients_list_pre) - 1):
+    if ingredients_list_pre[i] not in remove:
+        ingredients_list_after.append(ingredients_list_pre[i])
+    if len(ingredients_list_pre[i]) > 3:
+        ingredients_list_after.append(ingredients_list_pre[i])
 
 
-print(box_text)
+
+print(ingredients_list_after)
 
